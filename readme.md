@@ -65,10 +65,10 @@ The following models were trained on the processed training data:
 ### Training Accuracy Results:
 | Model | Training Accuracy |
 |-------|-------------------|
-| Dummy Classifier | 79.6% |
-| Decision Tree | 83.5% |
-| Random Forest | 95.2% |
-| XGBoost | 87.1% |
+| Dummy Classifier | 79.63% |
+| Decision Tree | 85.79% |
+| Random Forest | 88.84% |
+| XGBoost | 87.98% |
 
 The baseline model established a minimum performance benchmark. Random Forest showed signs of overfitting.
 
@@ -89,8 +89,8 @@ The baseline model established a minimum performance benchmark. Random Forest sh
 ### Cross-Validation Results:
 | Model | CV Mean Accuracy | Overfitting Gap |
 |-------|------------------|-----------------|
-| Random Forest | 86.4% | 8.8% |
-| XGBoost | 86.3% | 0.8% |
+| Random Forest | 88.83% | 2.5% |
+| XGBoost | 87.97% | 1.6% |
 
 ---
 
@@ -99,11 +99,11 @@ The baseline model established a minimum performance benchmark. Random Forest sh
 ### Test Set Evaluation Metrics (Threshold = 0.50)
 | Metric | Value |
 |--------|-------|
-| Accuracy | 0.8150 |
-| Precision | 0.7523 |
-| Recall | 0.4836 |
-| F1-Score | 0.5887 |
-| ROC-AUC | 0.8523 |
+| Accuracy | 0.8690 |
+| Precision | 0.7888 |
+| Recall | 0.4865 |
+| F1-Score | 0.6018 |
+| ROC-AUC | 0.8678 |
 
 A confusion matrix was plotted to analyze false positives and false negatives.
 
@@ -117,15 +117,15 @@ Multiple thresholds were evaluated using predicted probabilities.
 
 | Threshold | Recall | Precision | F1-Score |
 |-----------|--------|-----------|----------|
-| 0.50 | 0.483 | 0.752 | 0.589 |
-| 0.40 | 0.587 | 0.621 | 0.604 |
-| 0.30 | 0.753 | 0.452 | 0.565 |
-| 0.20 | 0.842 | 0.334 | 0.478 |
+| 0.50 | 0.486 | 0.789 | 0.602 |
+| 0.40 | 0.587 | 0.701 | 0.639 |
+| 0.30 | 0.676 | 0.589 | 0.641 |
+| 0.20 | 0.774 | 0.495 | 0.604 |
 
 A threshold of **0.30** was selected as the optimal operating point.
 
 ### At Threshold = 0.30:
-- Recall improved from 48% → 75%
+- Recall improved.
 - False negatives reduced significantly
 - Acceptable increase in false positives
 - Suitable for cost-effective retention campaigns
@@ -146,11 +146,11 @@ Feature importance from XGBoost was analyzed. Key drivers of churn:
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 1 | Age | 25.3% |
-| 2 | NumOfProducts | 18.7% |
-| 3 | Balance | 15.2% |
-| 4 | Geography_Germany | 12.1% |
-| 5 | IsActiveMember | 10.5% |
+| 1 | Age | 1153% |
+| 2 | NumOfProducts | 19.83% |
+| 3 | Balance | 3.6% |
+| 4 | Geography_Germany | 7.3% |
+| 5 | IsActiveMember | 11.39% |
 
 ### Business Insights:
 - **Age**: Older customers (40-60) are more likely to churn
@@ -164,11 +164,6 @@ Feature importance from XGBoost was analyzed. Key drivers of churn:
 ## Conclusion
 The final XGBoost model significantly outperformed the baseline classifier and demonstrated strong generalization on unseen data. By prioritizing recall through threshold tuning, the model effectively identified a larger proportion of at-risk customers.
 
-### Key Achievements:
-- ROC-AUC of 0.85 indicates excellent discrimination ability
-- Recall of 75% at threshold 0.30 captures majority of churners
-- Model is suitable for proactive retention strategies
-- Clear identification of key churn drivers for targeted interventions
 
 This solution enables the bank to implement cost-effective customer retention campaigns where the cost of missing a churner outweighs the cost of contacting a non-churner.
 
